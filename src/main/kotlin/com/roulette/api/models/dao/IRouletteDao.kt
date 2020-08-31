@@ -10,5 +10,15 @@ import java.util.*
 interface IRouletteDao: JpaRepository<Roulette, Long> {
     @Modifying
     @Query(value = "insert into Roulettes (id ,state, create_at ) values (:id,:state,:create_at) ", nativeQuery = true)
-    fun createRoulette(@Param("id") id:Long, @Param("state") state:String, @Param("create_at") create_at: Date)
+    fun createRoulette(@Param("id") id: Long, @Param("state") state: String, @Param("create_at") create_at: Date)
+
+
+    @Modifying
+    @Query(value = "update Roulettes set state = :state where id = :id", nativeQuery = true)
+    fun changeStateRoulette(@Param("id") id: Long, @Param("state") state: String): Int
+
+    @Modifying
+    @Query(value = "select * from Roulettes", nativeQuery = true)
+    fun findAllRoulettes():List<Roulette>
+
 }
