@@ -8,8 +8,8 @@ interface IRouletteService {
 
     fun openRoulette(id: Long): String
 
-    //fun createBet(rouletteId: Long, userId: Long,
-    //              betColor: String, betNumber: Long, betValue: Double): String
+    fun createBet(rouletteId: Long, userId: Long,
+                  betColor: String, betNumber: Long, betValue: Double): String
 
     fun closeRoulette(id: Long): String
 
